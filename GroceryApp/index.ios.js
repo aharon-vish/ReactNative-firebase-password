@@ -29,7 +29,14 @@ class GroceryApp extends Component {
         var users = {};
         ref.on('value', (snap) => {
             var items = [];
-            var users = snap.val();
+
+            snap.forEach(item=>{
+                if(item.val().email!== undefined)
+                {
+                    console.log(item.val().email)
+                }
+            });
+
             users.forEach((item) => {
                 items.push(item.email);
                 listenForItems(users)
